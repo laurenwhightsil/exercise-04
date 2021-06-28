@@ -1,7 +1,7 @@
 ---
 title: "Geography 13 Actvity 4"
 subtitle: "Meet R, RMarkdown, & Github"
-author: Mike Johnson
+author: Lauren Whightsil
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
@@ -23,7 +23,7 @@ output:
 3. Re-knit the document
 4. From the knit document, right click on the final map image and save it to the `img` directory.
 5. Push your changes back to your repo
-6. Submit the URL to your repo and the saved image to the Guachospace Dropbox.
+6. Submit the URL to your repo and the saved image to the Gauchospace Dropbox.
 
 ## Data: USA Cites
 
@@ -158,7 +158,7 @@ dim(cities)
 
 # Some basic Data Exploration
 
-Which an understanding of the data, lets answers a few questions:
+With an understanding of the data, lets answers a few questions:
 
 ```{r}
 # Which cities are the most dense?
@@ -177,7 +177,7 @@ cities %>%
 ## In line code:
 
 ```{r, echo = FALSE}
-threshold = 1000000
+threshold = 100000
 big_cities = 
   filter(cities, population > threshold) %>%
   filter(!state_name %in% c("Alaska", "Hawaii", "Puerto Rico"))
@@ -185,7 +185,7 @@ big_cities =
 
 We can evaluate R variables and code in-line:
 
-For example, there are `r nrow(big_cities)` cities with a population greater then `r formatC(threshold, format="d", big.mark=",")`.
+For example, there are `r nrow(big_cities)` cities with a population greater than `r formatC(threshold, format="d", big.mark=",")`.
 
 Here is a map!
 
@@ -196,7 +196,7 @@ big_cities %>%
   geom_point(aes(size = population, color = density)) + 
   scale_color_gradient(low = "blue", high = "red") + 
   labs(title = "USA Cities Population Stats",
-       subtitle = paste("Cities bigger then:", 
+       subtitle = paste("Cities bigger than:", 
                         formatC(threshold, format="d", big.mark=","),
                         "people"),
        caption = paste("Made by:", rmarkdown::metadata$author, "- Geography 13"),
